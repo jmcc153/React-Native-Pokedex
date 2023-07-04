@@ -1,7 +1,12 @@
 import {StyleSheet, View, SafeAreaView, Text, Image } from 'react-native'
 import getColorByPokemon from '../../utils/getColorByPokemon'
+import  Icon  from 'react-native-vector-icons/FontAwesome5'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import useAuth from '../../hooks/useAuth'
+import { useEffect } from 'react'
 
-export default function Header({name,order,image,type}) {
+
+export default function Header({name,order,image,type, handleFavorite,isFavorite}) {
   const color = getColorByPokemon(type)
   const bgStyle = {backgroundColor: color, ...styles.bgStyle}
   return (
@@ -10,9 +15,10 @@ export default function Header({name,order,image,type}) {
       <SafeAreaView style={styles.content}>
         <View style={styles.header}>
           <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{`#${`${order}`.padStart(3, 0)} ${name.charAt(0).toUpperCase() + name.slice(1)}`}</Text>
+          <Icon solid={isFavorite} name="heart" size={30} onPress={() => handleFavorite()} color="#FFF" />
         </View>
         <View style={styles.contentImg}>
-          <Image source={{uri:image}} style={styles.image} />
+          <Image source={{uri:image}} style={styles.image} onPress={handleFavorite} />
         </View>
       </SafeAreaView>
     </>

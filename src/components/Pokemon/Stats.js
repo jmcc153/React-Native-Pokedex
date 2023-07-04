@@ -8,9 +8,9 @@ export default function Stats({stats}) {
   return (
     <View>
       <View>
-        {stats.map((item) => {
+        {stats.map((item, index) => {
           return (
-            <View style={styles.statsContainer}>
+            <View key={index} style={styles.statsContainer}>
               <Text>{item.stat.name}</Text>
               <View style={styles.barContainer}>
                 <View style={styles.bar}>
@@ -47,16 +47,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   barContainer:{
+    width: '40%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 10,
+    gap: 20,
   },
   bar:{
     width: 100,
     height: 10,
-    backgroundColor: '#00',
+    backgroundColor: '#CFD8DC',
     borderRadius: 10,
   },
   barStat:{

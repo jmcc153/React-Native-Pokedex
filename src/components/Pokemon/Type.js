@@ -6,8 +6,8 @@ export default function Type({type}) {
   const bgStyles = (item) =>{ return {backgroundColor: getColorByPokemon(item.type.name), ...styles.bgText}}
   return (
     <View>
-        <View style={styles.textContainer}>{type.map((item) => {
-          return <Text style={bgStyles(item)}>{item.type.name}</Text>
+        <View style={styles.textContainer}>{type.map((item,index) => {
+          return <Text key={index} style={bgStyles(item)}>{item.type.name}</Text>
         })}</View>
     </View>
   )

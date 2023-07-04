@@ -1,9 +1,14 @@
 import React from 'react'
-import { Text } from 'react-native'
-
+import LoginForm from '../components/Auth/LoginForm'
+import UserData from '../components/Auth/UserData'
+import { View } from 'react-native'
+import useAuth from '../hooks/useAuth'
 const Account = () => {
+  const {user} = useAuth()
   return (
-    <Text>Account</Text>
+    <View>
+      {user ? <UserData/> : <LoginForm/>}
+    </View>
   )
 }
 

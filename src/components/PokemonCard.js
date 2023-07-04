@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import getColorByPokemon from '../utils/getColorByPokemon'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export default function PokemonCard({pokemons}) {
   const navigation = useNavigation()
@@ -20,6 +21,7 @@ export default function PokemonCard({pokemons}) {
             <Text style={styles.number}>#{`${pokemons.order}`.padStart(3, 0)}</Text>
             <Text style={styles.name}>{`${pokemons.name.charAt(0).toUpperCase() + pokemons.name.slice(1)} `}</Text>
             <Image source={{ uri: pokemons.image}} style={styles.image} />
+            <Icon name="heart" size={30} color="#FFF" fill="red" style={{position: 'absolute', bottom: 10, left: 10}} />
           </View>
         </View>
       </View>
